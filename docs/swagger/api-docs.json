@@ -1,0 +1,78 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Service用のIF仕様書",
+    "version": "1.0.0",
+    "title": "Service用のAPI"
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "TV操作用",
+      "description": " "
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/appliances/tv": {
+      "get": {
+        "tags": [
+          "TV操作用"
+        ],
+        "summary": "manipulateTv",
+        "operationId": "manipulateTvUsingGET",
+        "parameters": [
+          {
+            "name": "button",
+            "in": "query",
+            "description": "ボタン",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false,
+            "x-example": "power"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ManipulateTVResponse"
+            }
+          },
+          "400": {
+            "description": "パラメータエラー",
+            "schema": {
+              "$ref": "#/definitions/Swagger400ErrorResource"
+            }
+          },
+          "500": {
+            "description": "システムエラー",
+            "schema": {
+              "$ref": "#/definitions/Swagger500ErrorResource"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "ManipulateTVResponse": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "string",
+          "example": "success",
+          "description": "結果"
+        }
+      },
+      "title": "ManipulateTVResponse"
+    }
+  }
+}
