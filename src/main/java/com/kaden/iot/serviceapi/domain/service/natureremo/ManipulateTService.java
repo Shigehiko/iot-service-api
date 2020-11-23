@@ -10,6 +10,11 @@ public class ManipulateTService {
 
     private final NatureRemoApiClient natureRemoApiClient;
 
+    /**
+     * TV操作APIをコールする
+     *
+     * @param button ボタン
+     */
     public void runTv(String button){
 
         try {
